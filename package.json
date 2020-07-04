@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint": "eslint --debug src/",
-    "lint:write": "eslint src/ --fix",
+    "lint:write": "eslint src/ --color --fix",
     "prettier": "prettier --write src/**/*.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -41,8 +41,7 @@
   },
   "lint-staged": {
     "*.(js|jsx)": [
-      "npm run lint:write",
-      "git add"
+      "npm run lint:write"
     ]
   },
   "devDependencies": {
