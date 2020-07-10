@@ -1,11 +1,13 @@
 module.exports = {
+    root: true,
     env: {
       es6: true,
       browser: true,
       node: true,
     },
-    extends: ['airbnb','prettier','prettier/react','react-app','plugin:react/recommended', 'jest-enzyme'],
-    plugins: ['babel', 'import', 'jsx-a11y', 'react', 'prettier'],
+    // 'plugin:react/recommended', 'jest-enzyme'
+    extends: ['airbnb','prettier','prettier/react','react-app'],
+    plugins: ['react','babel', 'import', 'jsx-a11y', 'prettier'],
     parser: 'babel-eslint',
     parserOptions: {
       ecmaVersion: 6,
@@ -22,11 +24,18 @@ module.exports = {
       },
     },
     rules: {
+      "no-underscore-dangle": 0,
       'prettier/prettier': ['error'],
+      "no-restricted-imports": [
+        "error",
+        {
+          "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+        }
+      ],
       "react/prop-types": 0,
       "no-param-reassign": [2, { "props": false }],
+      "react/jsx-no-duplicate-props": [2,{ "ignoreCase": false}],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-      "no-underscore-dangle":  ["error", { "allow": ['*'] }],
       "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
       "react/jsx-props-no-spreading": "off",
       'linebreak-style': 'off', // Don't play nicely with Windows.
@@ -38,7 +47,7 @@ module.exports = {
       'no-plusplus': 'off',
       'space-before-function-paren': 0, // Incompatible with prettier
   
-      'max-len': ['error', 100, 2, { ignoreUrls: true, }], // airbnb is allowing some edge cases
+      'max-len': ['error', 150, 2, { ignoreUrls: true, }], // airbnb is allowing some edge cases
       'no-console': 'error', // airbnb is using warn
       'no-alert': 'error', // airbnb is using warn
   
@@ -52,7 +61,9 @@ module.exports = {
       'prefer-destructuring': 'off',
   
       'react/no-find-dom-node': 'off', // I don't know
-      'react/no-did-mount-set-state': 'off',
+      'react/no-did-mount-set-state': 0,
+      'react/no-did-update-set-state': 0,
+      // "react/no-did-mount-set-state": [1,0],
       'react/no-unused-prop-types': 'off', // Is still buggy
       'react/jsx-one-expression-per-line': 'off',
   
