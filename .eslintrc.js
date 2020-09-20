@@ -24,6 +24,8 @@ module.exports = {
 		},
 	},
 	rules: {
+		"class-methods-use-this": 'off',
+		"import/prefer-default-export": 'off',
 		'no-underscore-dangle': 0,
 		'prettier/prettier': ['error'],
 		'no-restricted-imports': [
@@ -78,13 +80,15 @@ module.exports = {
 		'react/jsx-one-expression-per-line': 'off',
 
 		'jsx-a11y/anchor-is-valid': ['error', { components: ['Link'], specialLink: ['to'] }],
-		'jsx-a11y/label-has-for': [
-			2,
-			{
-				required: {
-					every: ['id'],
-				},
-			},
-		], // for nested label htmlFor error
+		"jsx-a11y/label-has-associated-control": [ "off", {
+			"required": {
+			  "some": [ "nesting", "id"  ]
+			}
+		  }],
+		  "jsx-a11y/label-has-for": [ "error", {
+			"required": {
+			  "some": [ "nesting", "id"  ]
+			}
+		  }]
 	},
 };
